@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.44.0",
     "@tweakpane/core": "^2.0.5",
     "@types/three": "^0.185.1",
     "typescript": "~6.0.2",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "wrangler": "^4.110.0"
   },
   "dependencies": {
     "@kitschpatrol/tweakpane-plugin-thumbnail-list": "^1.0.4",
