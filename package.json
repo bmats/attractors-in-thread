@@ -1,0 +1,24 @@
+{
+  "name": "attractors-in-thread",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tweakpane/core": "^2.0.5",
+    "@types/three": "^0.185.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  },
+  "dependencies": {
+    "@kitschpatrol/tweakpane-plugin-thumbnail-list": "^1.0.4",
+    "paper": "^0.12.18",
+    "paperjs-offset": "^2.1.2",
+    "three": "^0.185.1",
+    "tweakpane": "^4.0.5"
+  }
+}

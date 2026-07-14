@@ -1,0 +1,40 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg-desk: #3f3f3f;
+  --bg-desk-grid: #2f2f2f;
+  --bg-page: #fff;
+  --bg-page-grid: #efefef;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --mm-to-px: 10px;
+
+  font: 18px var(--sans);
+  color: var(--text);
+  background: var(--bg-desk);
+  background: repeating-conic-gradient(var(--bg-desk) 0 25%, var(--bg-desk-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+  background: var(--bg-page);
+  background: repeating-conic-gradient(var(--bg-page) 0 25%, var(--bg-page-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
+  border: 1px solid var(--bg-page);
+  border-radius: 3px;
+}
+
+.tp-dfwv {
+  min-width: 320px;
+}
