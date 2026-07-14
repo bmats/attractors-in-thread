@@ -1,0 +1,80 @@
+:root {
+  --text: #bfbfbf;
+  --text-h: #efefef;
+  --bg-desk: #3f3f3f;
+  --bg-desk-grid: #2f2f2f;
+  --bg-page: #fff;
+  --bg-page-grid: #efefef;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --mm-to-px: 10px;
+
+  --tp-plugin-thumbnail-list-height: 600px;
+  --tp-plugin-thumbnail-list-thumb-size: 72px;
+
+  font: 18px var(--sans);
+  color: var(--text);
+  background: var(--bg-desk);
+  background: repeating-conic-gradient(var(--bg-desk) 0 25%, var(--bg-desk-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+}
+
+header a {
+  color: var(--text);
+}
+
+#canvas {
+  background: var(--bg-page);
+  background: repeating-conic-gradient(var(--bg-page) 0 25%, var(--bg-page-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
+  border: 1px solid var(--bg-page);
+  border-radius: 3px;
+}
+
+/* Wider tweakpane */
+.tp-dfwv {
+  min-width: 320px;
+}
+
+/* Hide the thumbnail-list plugin "None" option. */
+.tp-thumbv_opt[data-value=''] {
+  display: none;
+}
+
+/* Fix thumbnail-list plugin line height for wrapped labels. */
+.tp-thumbv_lbl {
+  display: flex;
+  align-items: center;
+  line-height: 1.25 !important;
+  overflow: hidden;
+}
