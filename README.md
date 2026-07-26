@@ -36,9 +36,9 @@ Once you've designed an attractor you like, here's how to get it onto fabric:
 1. **Open your SVG in Inkscape.** The attractor paths will appear as vector curves ready for Ink/Stitch to interpret as stitch runs.
 1. **Simulate before you stitch!** Simulate the stitch path to catch any issues before you embroider. *Extensions → Ink/Stitch → Visualize and Export → Simulator*
 
-   This shows you exactly how the machine will move through the design. This is a good way to spot overly long jumps, stitch density issues, or paths that need reordering.
+   This shows you exactly how the machine will move through the design. This is a good way to spot ordering or stitch density issues.
 
-1. **Export to your machine format**. When you're happy with the simulation: **Extensions → Ink/Stitch → File → Export**. Choose `.PES` (Brother machines) for this workshop.
+1. **Export to your machine format**. When you're happy with the simulation: **File → Export...**. Choose `.PES` (Brother machines) for this workshop.
 1. Transfer the file to the machine via USB and stitch!
 
 ## Make your own

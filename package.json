@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@kitschpatrol/tweakpane-plugin-thumbnail-list": "^1.0.4",
+    "@tweakpane/plugin-essentials": "^0.2.1",
     "d3-polygon": "^3.0.1",
     "paper": "^0.12.18",
     "paperjs-offset": "^2.1.2",

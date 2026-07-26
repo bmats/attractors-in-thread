@@ -18,6 +18,9 @@ export abstract class AttractorBase {
 
   controller: Controller;
 
+  // Scalar bindings that `randomize()` may re-roll within their declared range.
+  private randomizable: { target: object; key: string; min: number; max: number; binding: BindingApi }[] = [];
+
   constructor(controller: Controller) {
     this.controller = controller;
   }
@@ -25,25 +28,26 @@ export abstract class AttractorBase {
   abstract render(layer: paper.Layer): void;
   abstract buildTweakpane(folder: FolderApi): void;
 
+  /** Adds a slider bound to `target[key]`, rendering on change and registering it for randomization. */
+  protected slider<T extends object>(folder: FolderApi, target: T, key: keyof T & string, min: number, max: number): void {
+    const binding = folder.addBinding(target, key, { min, max });
+    binding.on('change', () => this.controller.render());
+    this.randomizable.push({ target, key, min, max, binding });
+  }
+
+  /** Re-rolls every registered slider within its range, then re-renders. No-op if none are registered. */
+  randomize(): void {
+    for (const { target, key, min, max, binding } of this.randomizable) {
+      (target as Record<string, number>)[key] = min + Math.random() * (max - min);
+      binding.refresh();
+    }
+    this.controller.render();
+  }
+
   onDrag(_delta: paper.Point): void {
   }
 
   onScroll(_deltaY: number): void {
-  }
-
-  fitToView(path: paper.Path): void {
-    if (path.segments.length <= 1) {
-      return;
-    }
-
-    // Center on the view and scale to fit the target size, leaving a margin on all sides
-    const maxSize = Math.min(paper.view.size.width, paper.view.size.height) - 2 * mmToPx(MARGIN_MM);
-    const bounds = path.bounds;
-    const maxBounds = Math.max(bounds.width, bounds.height);
-    path.scale(maxSize / maxBounds, bounds.center);
-    path.position = paper.view.center;
-
-    console.log(`Fit to view from ${bounds.width} x ${bounds.height} to ${maxSize}`);
   }
 }
 
@@ -82,13 +86,22 @@ export abstract class Attractor2D extends AttractorBase {
   buildTweakpane(folder: FolderApi): void {
     folder.addBinding(this, 'iterations', {
       min: 100,
-      max: 20000,
+      max: 10000,
       step: 1,
     }).on('change', () => this.controller.render());
-    folder.addBinding(this, 'deltaTime', {
-      min: 0.001,
-      max: 0.1,
-    }).on('change', () => this.controller.render());
+  }
+
+  fitToView(path: paper.Path): void {
+    if (path.segments.length <= 1) {
+      return;
+    }
+
+    // Center on the view and scale to fit the target size, leaving a margin on all sides
+    const maxSize = Math.min(paper.view.size.width, paper.view.size.height) - 2 * mmToPx(MARGIN_MM);
+    const bounds = path.bounds;
+    const maxBounds = Math.max(bounds.width, bounds.height);
+    path.scale(maxSize / maxBounds, bounds.center);
+    path.position = paper.view.center;
   }
 }
 
@@ -200,6 +213,12 @@ export abstract class Attractor3D extends AttractorBase {
   }
 
   buildTweakpane(folder: FolderApi): void {
+    folder.addBinding(this, 'iterations', {
+      min: 100,
+      max: 10000,
+      step: 1,
+    }).on('change', () => this.controller.render());
+
     const cameraFolder = folder.addFolder({ title: 'camera', expanded: false });
 
     this.rotationBinding = cameraFolder.addBinding(this, 'rotation', {
@@ -216,18 +235,6 @@ export abstract class Attractor3D extends AttractorBase {
     cameraFolder.addBinding(this, 'fov', {
       min: 10,
       max: 120,
-    }).on('change', () => this.controller.render());
-
-    folder.addBinding(this, 'iterations', {
-      min: 100,
-      max: 20000,
-      step: 1,
-    }).on('change', () => this.controller.render());
-
-    folder.addBinding(this, 'deltaTime', {
-      min: 0.0001,
-      max: 0.5,
-      step: 0.01,
     }).on('change', () => this.controller.render());
   }
 }

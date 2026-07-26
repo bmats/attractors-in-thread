@@ -4,17 +4,6 @@ import { FolderApi } from 'tweakpane';
 import { Attractor2D, Attractor3D } from './attractor';
 import type Controller from './controller';
 
-function addSlider<T extends object>(
-  folder: FolderApi,
-  controller: Controller,
-  target: T,
-  key: keyof T & string,
-  min: number,
-  max: number,
-): void {
-  folder.addBinding(target, key, { min, max }).on('change', () => controller.render());
-}
-
 class ThomasAttractor extends Attractor3D {
   readonly name = 'Thomas';
   readonly imagePath = '/thumb/thomas.svg';
@@ -44,10 +33,10 @@ class ThomasAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'b', 0.01, 0.4);
-    addSlider(folder, this.controller, this.startPoint, 'x', -1.1, 1.1);
-    addSlider(folder, this.controller, this.startPoint, 'y', -1.1, 1.1);
-    addSlider(folder, this.controller, this.startPoint, 'z', -1, 1);
+    this.slider(folder, this, 'b', 0.01, 0.4);
+    this.slider(folder, this.startPoint, 'x', -1.1, 1.1);
+    this.slider(folder, this.startPoint, 'y', -1.1, 1.1);
+    this.slider(folder, this.startPoint, 'z', -1, 1);
 
     super.buildTweakpane(folder);
   }
@@ -92,15 +81,15 @@ class AizawaAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 0.3, 3);
-    addSlider(folder, this.controller, this, 'b', 0.3, 3);
-    addSlider(folder, this.controller, this, 'c', 0.1, 3);
-    addSlider(folder, this.controller, this, 'd', 1, 3);
-    addSlider(folder, this.controller, this, 'e', 0.01, 3);
-    addSlider(folder, this.controller, this, 'f', 0.01, 3);
-    addSlider(folder, this.controller, this.startPoint, 'x', -1.1, 1.1);
-    addSlider(folder, this.controller, this.startPoint, 'y', -1.1, 1.1);
-    addSlider(folder, this.controller, this.startPoint, 'z', -1, 1);
+    this.slider(folder, this, 'a', 0.3, 3);
+    this.slider(folder, this, 'b', 0.3, 3);
+    this.slider(folder, this, 'c', 0.1, 3);
+    this.slider(folder, this, 'd', 1, 3);
+    this.slider(folder, this, 'e', 0.01, 3);
+    this.slider(folder, this, 'f', 0.01, 3);
+    this.slider(folder, this.startPoint, 'x', -1.1, 1.1);
+    this.slider(folder, this.startPoint, 'y', -1.1, 1.1);
+    this.slider(folder, this.startPoint, 'z', -1, 1);
 
     super.buildTweakpane(folder);
   }
@@ -137,12 +126,12 @@ class LorenzAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'sigma', 0.1, 50);
-    addSlider(folder, this.controller, this, 'rho', 0.5, 60);
-    addSlider(folder, this.controller, this, 'beta', 0.1, 10);
-    addSlider(folder, this.controller, this.startPoint, 'x', -10, 10);
-    addSlider(folder, this.controller, this.startPoint, 'y', -10, 10);
-    addSlider(folder, this.controller, this.startPoint, 'z', 0, 10);
+    this.slider(folder, this, 'sigma', 0.1, 50);
+    this.slider(folder, this, 'rho', 0.5, 60);
+    this.slider(folder, this, 'beta', 0.1, 10);
+    this.slider(folder, this.startPoint, 'x', -10, 10);
+    this.slider(folder, this.startPoint, 'y', -10, 10);
+    this.slider(folder, this.startPoint, 'z', 0, 10);
 
     super.buildTweakpane(folder);
   }
@@ -181,14 +170,14 @@ class DadrasAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 1, 3);
-    addSlider(folder, this.controller, this, 'b', 0.2, 3);
-    addSlider(folder, this.controller, this, 'c', 0.1, 2);
-    addSlider(folder, this.controller, this, 'd', 1, 3);
-    addSlider(folder, this.controller, this, 'e', 5, 10);
-    addSlider(folder, this.controller, this.startPoint, 'x', -1.5, 1.5);
-    addSlider(folder, this.controller, this.startPoint, 'y', -2, 2);
-    addSlider(folder, this.controller, this.startPoint, 'z', -5, 5);
+    this.slider(folder, this, 'a', 1, 3);
+    this.slider(folder, this, 'b', 0.2, 3);
+    this.slider(folder, this, 'c', 0.1, 2);
+    this.slider(folder, this, 'd', 1, 3);
+    this.slider(folder, this, 'e', 5, 10);
+    this.slider(folder, this.startPoint, 'x', -1.5, 1.5);
+    this.slider(folder, this.startPoint, 'y', -2, 2);
+    this.slider(folder, this.startPoint, 'z', -5, 5);
 
     super.buildTweakpane(folder);
   }
@@ -226,12 +215,12 @@ class ChenAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'alpha', 3, 5);
-    addSlider(folder, this.controller, this, 'beta', -10, -7);
-    addSlider(folder, this.controller, this, 'delta', -0.5, 0.1);
-    addSlider(folder, this.controller, this.startPoint, 'x', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'y', -5, 10);
-    addSlider(folder, this.controller, this.startPoint, 'z', -10, 10);
+    this.slider(folder, this, 'alpha', 3, 5);
+    this.slider(folder, this, 'beta', -10, -7);
+    this.slider(folder, this, 'delta', -0.5, 0.1);
+    this.slider(folder, this.startPoint, 'x', -5, 5);
+    this.slider(folder, this.startPoint, 'y', -5, 10);
+    this.slider(folder, this.startPoint, 'z', -10, 10);
 
     super.buildTweakpane(folder);
   }
@@ -270,13 +259,13 @@ class Lorenz84Attractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 0.01, 5);
-    addSlider(folder, this.controller, this, 'b', 1, 9);
-    addSlider(folder, this.controller, this, 'f', 3, 9);
-    addSlider(folder, this.controller, this, 'g', 0.1, 9);
-    addSlider(folder, this.controller, this.startPoint, 'x', -4, 4);
-    addSlider(folder, this.controller, this.startPoint, 'y', -4, 4);
-    addSlider(folder, this.controller, this.startPoint, 'z', -4, 4);
+    this.slider(folder, this, 'a', 0.01, 5);
+    this.slider(folder, this, 'b', 1, 9);
+    this.slider(folder, this, 'f', 3, 9);
+    this.slider(folder, this, 'g', 0.1, 9);
+    this.slider(folder, this.startPoint, 'x', -4, 4);
+    this.slider(folder, this.startPoint, 'y', -4, 4);
+    this.slider(folder, this.startPoint, 'z', -4, 4);
 
     super.buildTweakpane(folder);
   }
@@ -314,12 +303,12 @@ class RosslerAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 0.1, 10);
-    addSlider(folder, this.controller, this, 'b', 0.1, 10);
-    addSlider(folder, this.controller, this, 'c', 0.1, 10);
-    addSlider(folder, this.controller, this.startPoint, 'x', -10, 10);
-    addSlider(folder, this.controller, this.startPoint, 'y', -10, 10);
-    addSlider(folder, this.controller, this.startPoint, 'z', -10, 10);
+    this.slider(folder, this, 'a', 0.1, 10);
+    this.slider(folder, this, 'b', 0.1, 10);
+    this.slider(folder, this, 'c', 0.1, 10);
+    this.slider(folder, this.startPoint, 'x', -10, 10);
+    this.slider(folder, this.startPoint, 'y', -10, 10);
+    this.slider(folder, this.startPoint, 'z', -10, 10);
 
     super.buildTweakpane(folder);
   }
@@ -355,10 +344,10 @@ class HalvorsenAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 0.1, 3);
-    addSlider(folder, this.controller, this.startPoint, 'x', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'y', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'z', -5, 5);
+    this.slider(folder, this, 'a', 0.1, 3);
+    this.slider(folder, this.startPoint, 'x', -5, 5);
+    this.slider(folder, this.startPoint, 'y', -5, 5);
+    this.slider(folder, this.startPoint, 'z', -5, 5);
 
     super.buildTweakpane(folder);
   }
@@ -395,11 +384,11 @@ class RabinovichFabrikantAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'alpha', 0.1, 4);
-    addSlider(folder, this.controller, this, 'gamma', 0.1, 4);
-    addSlider(folder, this.controller, this.startPoint, 'x', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'y', -8, 8);
-    addSlider(folder, this.controller, this.startPoint, 'z', 0, 7);
+    this.slider(folder, this, 'alpha', 0.1, 4);
+    this.slider(folder, this, 'gamma', 0.1, 4);
+    this.slider(folder, this.startPoint, 'x', -5, 5);
+    this.slider(folder, this.startPoint, 'y', -8, 8);
+    this.slider(folder, this.startPoint, 'z', 0, 7);
 
     super.buildTweakpane(folder);
   }
@@ -440,15 +429,15 @@ class ThreeScrollUnifiedChaoticSystem extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 30, 40);
-    addSlider(folder, this.controller, this, 'b', 30, 55);
-    addSlider(folder, this.controller, this, 'c', 0.1, 11 / 6);
-    addSlider(folder, this.controller, this, 'd', 0.01, 0.16);
-    addSlider(folder, this.controller, this, 'e', 0.01, 0.65);
-    addSlider(folder, this.controller, this, 'f', 10, 20);
-    addSlider(folder, this.controller, this.startPoint, 'x', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'y', -5, 5);
-    addSlider(folder, this.controller, this.startPoint, 'z', -5, 5);
+    this.slider(folder, this, 'a', 30, 40);
+    this.slider(folder, this, 'b', 30, 55);
+    this.slider(folder, this, 'c', 0.1, 11 / 6);
+    this.slider(folder, this, 'd', 0.01, 0.16);
+    this.slider(folder, this, 'e', 0.01, 0.65);
+    this.slider(folder, this, 'f', 10, 20);
+    this.slider(folder, this.startPoint, 'x', -5, 5);
+    this.slider(folder, this.startPoint, 'y', -5, 5);
+    this.slider(folder, this.startPoint, 'z', -5, 5);
 
     super.buildTweakpane(folder);
   }
@@ -485,11 +474,11 @@ class SprottAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 1.4, 2.4);
-    addSlider(folder, this.controller, this, 'b', 1.4, 2.4);
-    addSlider(folder, this.controller, this.startPoint, 'x', -1, 1);
-    addSlider(folder, this.controller, this.startPoint, 'y', -1, 1);
-    addSlider(folder, this.controller, this.startPoint, 'z', -1, 1);
+    this.slider(folder, this, 'a', 1.4, 2.4);
+    this.slider(folder, this, 'b', 1.4, 2.4);
+    this.slider(folder, this.startPoint, 'x', -1, 1);
+    this.slider(folder, this.startPoint, 'y', -1, 1);
+    this.slider(folder, this.startPoint, 'z', -1, 1);
 
     super.buildTweakpane(folder);
   }
@@ -527,12 +516,12 @@ class FourWingAttractor extends Attractor3D {
   }
 
   buildTweakpane(folder: FolderApi): void {
-    addSlider(folder, this.controller, this, 'a', 0.1, 0.2);
-    addSlider(folder, this.controller, this, 'b', 0.01, 0.02);
-    addSlider(folder, this.controller, this, 'c', -0.4, -0.3);
-    addSlider(folder, this.controller, this.startPoint, 'x', -3, 3);
-    addSlider(folder, this.controller, this.startPoint, 'y', -3, 3);
-    addSlider(folder, this.controller, this.startPoint, 'z', -3, 3);
+    this.slider(folder, this, 'a', 0.1, 0.2);
+    this.slider(folder, this, 'b', 0.01, 0.02);
+    this.slider(folder, this, 'c', -0.4, -0.3);
+    this.slider(folder, this.startPoint, 'x', -3, 3);
+    this.slider(folder, this.startPoint, 'y', -3, 3);
+    this.slider(folder, this.startPoint, 'z', -3, 3);
 
     super.buildTweakpane(folder);
   }

@@ -2,6 +2,8 @@ import paper from 'paper';
 import { FolderApi, Pane } from 'tweakpane';
 import type { BindingApi } from '@tweakpane/core';
 import * as TweakpaneThumbnailList from '@kitschpatrol/tweakpane-plugin-thumbnail-list';
+import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
+import type { ButtonGridApi } from '@tweakpane/plugin-essentials';
 import { AttractorBase } from './attractor';
 import { ATTRACTORS } from './attractors';
 import { convertToInkStitch } from './inkstitch';
@@ -29,6 +31,7 @@ export default class Controller {
   constructor() {
     this.pane = new Pane();
     this.pane.registerPlugin(TweakpaneThumbnailList);
+    this.pane.registerPlugin(EssentialsPlugin);
 
     this.pane.addBinding(this, 'attractorIndex', {
       label: 'attractor',
@@ -85,9 +88,19 @@ export default class Controller {
     this.attractorFolder = this.pane.addFolder({ title: `Attractor: ${this.attractor.name}`, index: 2 });
     this.attractor.buildTweakpane(this.attractorFolder);
 
-    // Add a button to reset to a fresh instance
-    this.attractorFolder.addButton({ label: 'reset', title: 'preset' })
-      .on('click', () => this.changeAttractor());
+    // Add buttons to reset to a fresh instance or randomize the current one
+    (this.attractorFolder.addBlade({
+      view: 'buttongrid',
+      size: [2, 1],
+      cells: (x: number) => ({ title: x === 0 ? 'reset' : 'randomize' }),
+      label: 'preset',
+    }) as ButtonGridApi).on('click', (event) => {
+      if (event.index[0] === 0) {
+        this.changeAttractor();
+      } else {
+        this.attractor.randomize();
+      }
+    });
 
     this.render();
   }
@@ -115,7 +128,6 @@ export default class Controller {
     layer.removeChildren();
     this.attractor.render(layer);
     this.style.apply(layer);
-    console.log(`Rendered ${this.attractor.name}`, layer);
 
     this.validate();
   }
