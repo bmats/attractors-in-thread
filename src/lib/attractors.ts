@@ -8,6 +8,18 @@ class ThomasAttractor extends Attractor3D {
   readonly name = 'Thomas';
   readonly imagePath = '/thumb/thomas.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>y</mi><mo>−</mo><mi>b</mi><mi>x</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>z</mi><mo>−</mo><mi>b</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>x</mi><mo>−</mo><mi>b</mi><mi>z</mi></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   b: number = 0.208186;
 
   constructor(controller: Controller) {
@@ -45,6 +57,19 @@ class ThomasAttractor extends Attractor3D {
 class AizawaAttractor extends Attractor3D {
   readonly name = 'Aizawa';
   readonly imagePath = '/thumb/aizawa.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>(</mo><mi>z</mi><mo>−</mo><mi>b</mi><mo>)</mo><mi>x</mi><mo>−</mo><mi>d</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>d</mi><mi>x</mi><mo>+</mo><mo>(</mo><mi>z</mi><mo>−</mo><mi>b</mi><mo>)</mo><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mo>+</mo><mi>a</mi><mi>z</mi><mo>−</mo><msup><mi>z</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn></mtd></mtr>
+          <mtr><mtd></mtd><mtd></mtd><mtd><mo>−</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>)</mo><mo>(</mo><mn>1</mn><mo>+</mo><mi>e</mi><mi>z</mi><mo>)</mo><mo>+</mo><mi>f</mi><mi>z</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   a: number = 0.95;
   b: number = 0.7;
@@ -99,6 +124,18 @@ class LorenzAttractor extends Attractor3D {
   readonly name = 'Lorenz';
   readonly imagePath = '/thumb/lorenz.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>σ</mi><mo>(</mo><mo>−</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>ρ</mi><mi>x</mi><mo>−</mo><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mi>y</mi><mo>−</mo><mi>β</mi><mi>z</mi></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   sigma: number = 10;
   rho: number = 28;
   beta: number = 8 / 3;
@@ -140,6 +177,18 @@ class LorenzAttractor extends Attractor3D {
 class DadrasAttractor extends Attractor3D {
   readonly name = 'Dadras';
   readonly imagePath = '/thumb/dadras.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>−</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>d</mi><mi>x</mi><mi>y</mi><mo>−</mo><mi>e</mi><mi>z</mi></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   a: number = 3;
   b: number = 2.7;
@@ -187,6 +236,18 @@ class ChenAttractor extends Attractor3D {
   readonly name = 'Chen';
   readonly imagePath = '/thumb/chen.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>α</mi><mi>x</mi><mo>−</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>β</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>δ</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>/</mo><mn>3</mn></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   alpha: number = 5;
   beta: number = -10;
   delta: number = -0.38;
@@ -229,6 +290,18 @@ class ChenAttractor extends Attractor3D {
 class Lorenz84Attractor extends Attractor3D {
   readonly name = 'Lorenz-84';
   readonly imagePath = '/thumb/lorenz-84.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>x</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>f</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>y</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi>b</mi><mi>x</mi><mi>z</mi><mo>+</mo><mi>g</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>+</mo><mi>b</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   a: number = 0.95;
   b: number = 7.91;
@@ -275,6 +348,18 @@ class RosslerAttractor extends Attractor3D {
   readonly name = 'Rössler';
   readonly imagePath = '/thumb/rossler.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mo>(</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>+</mo><mi>a</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mo>+</mo><mi>z</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi>c</mi><mo>)</mo></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   a: number = 0.2;
   b: number = 0.2;
   c: number = 5.7;
@@ -318,6 +403,18 @@ class HalvorsenAttractor extends Attractor3D {
   readonly name = 'Halvorsen';
   readonly imagePath = '/thumb/halvorsen.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   a: number = 1.89;
 
   constructor(controller: Controller) {
@@ -356,6 +453,18 @@ class HalvorsenAttractor extends Attractor3D {
 class RabinovichFabrikantAttractor extends Attractor3D {
   readonly name = 'Rabinovich-Fabrikant';
   readonly imagePath = '/thumb/rabinovich-fabrikant.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>(</mo><mi>z</mi><mo>−</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi>γ</mi><mi>x</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>(</mo><mn>3</mn><mi>z</mi><mo>+</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi>γ</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mn>2</mn><mi>z</mi><mo>(</mo><mi>α</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>)</mo></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   alpha: number = 0.14;
   gamma: number = 0.1;
@@ -397,6 +506,18 @@ class RabinovichFabrikantAttractor extends Attractor3D {
 class ThreeScrollUnifiedChaoticSystem extends Attractor3D {
   readonly name = 'Three-Scroll Unified Chaotic System';
   readonly imagePath = '/thumb/three-scroll-unified-chaotic-system.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>a</mi><mo>(</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>d</mi><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mi>x</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>f</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi>e</mi><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   a: number = 32.48;
   b: number = 45.84;
@@ -447,6 +568,18 @@ class SprottAttractor extends Attractor3D {
   readonly name = 'Sprott';
   readonly imagePath = '/thumb/sprott.svg';
 
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>+</mo><mi>a</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mo>−</mo><mi>b</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
+
   a: number = 2.07;
   b: number = 1.79;
 
@@ -487,6 +620,18 @@ class SprottAttractor extends Attractor3D {
 class FourWingAttractor extends Attractor3D {
   readonly name = 'Four-Wing';
   readonly imagePath = '/thumb/four-wing.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>a</mi><mi>x</mi><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>−</mo><mi>x</mi><mi>y</mi></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   a: number = 0.2;
   b: number = 0.01;
@@ -530,6 +675,17 @@ class FourWingAttractor extends Attractor3D {
 class DuffingOscillator extends Attractor2D {
   readonly name = 'Duffing (2D)';
   readonly imagePath = '/thumb/duffing.svg';
+
+  get equation(): string {
+    return `
+      <math>
+        <mtable>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>γ</mi><mi>cos</mi><mspace width="0.17em"></mspace><mo>(</mo><mi>ω</mi><mi>t</mi><mo>)</mo><mo>−</mo><mi>δ</mi><mi>y</mi><mo>−</mo><mi>α</mi><mi>x</mi><mo>−</mo><mi>β</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr>
+        </mtable>
+      </math>
+    `;
+  }
 
   constructor(controller: Controller) {
     super(controller);

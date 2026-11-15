@@ -12,6 +12,10 @@ const MARGIN_MM = 1;
 const MIN_CAMERA_DISTANCE = 1;
 const MAX_CAMERA_DISTANCE = 10;
 
+// 2D zoom multipliers
+const MIN_ZOOM = 0.1;
+const MAX_ZOOM = 1.5;
+
 export abstract class AttractorBase {
   abstract readonly name: string;
   readonly imagePath: string = '';
@@ -25,8 +29,21 @@ export abstract class AttractorBase {
     this.controller = controller;
   }
 
-  abstract render(layer: paper.Layer): void;
-  abstract buildTweakpane(folder: FolderApi): void;
+  abstract render(layer: paper.Group): void;
+
+  /** Returns MathML markup for the attractor's system of equations. */
+  get equation(): string {
+    return '';
+  }
+
+  buildTweakpane(folder: FolderApi): void {
+    const equation = this.equation;
+    if (equation) {
+      // Kinda hacky: in order to show some static HTML, add a separator but take over its HTML.
+      const blade = folder.addBlade({ view: 'separator', index: 0 });
+      blade.element.innerHTML = `<div class="equation">${equation}</div>`;
+    }
+  }
 
   /** Adds a slider bound to `target[key]`, rendering on change and registering it for randomization. */
   protected slider<T extends object>(folder: FolderApi, target: T, key: keyof T & string, min: number, max: number): void {
@@ -57,9 +74,12 @@ export abstract class Attractor2D extends AttractorBase {
   iterations: number = 3000;
   deltaTime: number = 0.01;
 
+  zoom: number = 1;
+  zoomBinding?: BindingApi;
+
   abstract nextPoint(point: paper.Point, t: number, deltaTime: number): paper.Point;
 
-  render(layer: paper.Layer): void {
+  render(layer: paper.Group): void {
     const path = new paper.Path();
     path.name = 'Attractor';
     layer.addChild(path);
@@ -84,11 +104,30 @@ export abstract class Attractor2D extends AttractorBase {
   }
 
   buildTweakpane(folder: FolderApi): void {
+    super.buildTweakpane(folder);
+
     folder.addBinding(this, 'iterations', {
       min: 100,
       max: 10000,
       step: 1,
     }).on('change', () => this.controller.render());
+
+    const cameraFolder = folder.addFolder({ title: 'camera', expanded: false });
+
+    this.zoomBinding = cameraFolder.addBinding(this, 'zoom', {
+      min: MIN_ZOOM,
+      max: MAX_ZOOM,
+    }).on('change', () => this.controller.render());
+  }
+
+  onScroll(deltaY: number): void {
+    // Same scaling as Attractor3D.onScroll. Inverted since zoom grows as distance shrinks.
+    const scale = Math.pow(0.95, Math.abs(deltaY) * 0.01);
+    const zoom = this.zoom * (deltaY < 0 ? 1 / scale : scale);
+    this.zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom));
+
+    this.zoomBinding?.refresh();
+    this.controller.render();
   }
 
   fitToView(path: paper.Path): void {
@@ -100,7 +139,7 @@ export abstract class Attractor2D extends AttractorBase {
     const maxSize = Math.min(paper.view.size.width, paper.view.size.height) - 2 * mmToPx(MARGIN_MM);
     const bounds = path.bounds;
     const maxBounds = Math.max(bounds.width, bounds.height);
-    path.scale(maxSize / maxBounds, bounds.center);
+    path.scale(this.zoom * maxSize / maxBounds, bounds.center);
     path.position = paper.view.center;
   }
 }
@@ -123,7 +162,7 @@ export abstract class Attractor3D extends AttractorBase {
 
   abstract nextPoint(point: Vector3, deltaTime: number): Vector3;
 
-  render(layer: paper.Layer): void {
+  render(layer: paper.Group): void {
     const path = new paper.Path();
     path.name = 'Attractor';
     layer.addChild(path);
@@ -213,6 +252,8 @@ export abstract class Attractor3D extends AttractorBase {
   }
 
   buildTweakpane(folder: FolderApi): void {
+    super.buildTweakpane(folder);
+
     folder.addBinding(this, 'iterations', {
       min: 100,
       max: 10000,

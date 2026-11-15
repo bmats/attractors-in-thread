@@ -1,4 +1,4 @@
-# Strange Attractors in Thread
+# Chaotic Embroidery
 
 A browser-based tool for designing [strange attractors](https://en.wikipedia.org/wiki/Attractor) (mathematical systems that generate intricate, infinitely non-repeating patterns) and generating vector patterns ready for machine embroidery.
 

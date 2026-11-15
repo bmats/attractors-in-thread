@@ -1,22 +1,52 @@
 :root {
-  --text: #bfbfbf;
-  --text-h: #efefef;
-  --bg-desk: #3f3f3f;
-  --bg-desk-grid: #2f2f2f;
-  --bg-page: #fff;
-  --bg-page-grid: #efefef;
+  --color-bg: #EBF1F7;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F6F9FB;
+  --color-fg: #1E2A43;
+  --color-fg-secondary: #606E80;
+  --color-border: #D7E0EA;
+  --color-accent: #5D5BD6;
+  --color-grid: rgba(122, 152, 185, 0.3); /* --color-border on white but translucent so overlapping major lines are darker */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font: 'Figtree', system-ui, 'Segoe UI', Roboto, sans-serif;
 
   --mm-to-px: 10px;
+
+  /* Hoop proportions (relative to the 4" stitch area) */
+  --hoop-ring: calc(var(--mm-to-px) * 3.5);
+  --hoop-outer-radius: calc(var(--mm-to-px) * 13.8);
+  --hoop-inner-radius: calc(var(--mm-to-px) * 10.3);
 
   --tp-plugin-thumbnail-list-height: 600px;
   --tp-plugin-thumbnail-list-thumb-size: 72px;
 
-  font: 18px var(--sans);
-  color: var(--text);
-  background: var(--bg-desk);
-  background: repeating-conic-gradient(var(--bg-desk) 0 25%, var(--bg-desk-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
+  /* Light Tweakpane theme */
+  --tp-base-font-family: var(--font);
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: color-mix(in srgb, var(--color-fg) 12%, transparent);
+  --tp-button-background-color: var(--color-accent);
+  --tp-button-background-color-hover: color-mix(in srgb, var(--color-accent) 88%, black);
+  --tp-button-background-color-focus: color-mix(in srgb, var(--color-accent) 88%, black);
+  --tp-button-background-color-active: color-mix(in srgb, var(--color-accent) 76%, black);
+  --tp-button-foreground-color: #fff;
+  --tp-container-background-color: color-mix(in srgb, var(--color-border) 45%, transparent);
+  --tp-container-background-color-hover: color-mix(in srgb, var(--color-border) 65%, transparent);
+  --tp-container-background-color-focus: color-mix(in srgb, var(--color-border) 80%, transparent);
+  --tp-container-background-color-active: var(--color-border);
+  --tp-container-foreground-color: var(--color-fg);
+  --tp-groove-foreground-color: var(--color-border);
+  --tp-input-background-color: var(--color-surface-secondary);
+  --tp-input-background-color-hover: color-mix(in srgb, var(--color-border) 65%, var(--color-surface));
+  --tp-input-background-color-focus: color-mix(in srgb, var(--color-border) 80%, var(--color-surface));
+  --tp-input-background-color-active: var(--color-border);
+  --tp-input-foreground-color: var(--color-fg);
+  --tp-label-foreground-color: var(--color-fg-secondary);
+  --tp-monitor-background-color: var(--color-surface-secondary);
+  --tp-monitor-foreground-color: var(--color-fg-secondary);
+
+  font: 18px var(--font);
+  color: var(--color-fg);
+  background: var(--color-bg);
 }
 
 body {
@@ -34,36 +64,137 @@ body {
 header {
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 header h1 {
   margin: 0;
   font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-h);
+  font-weight: 700;
+  color: var(--color-fg);
 }
 
 header p {
   margin: 0.25rem 0 0;
   font-size: 0.75rem;
+  color: var(--color-fg-secondary);
 }
 
-header a {
-  color: var(--text);
+header a, footer a {
+  color: inherit;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--color-fg-secondary);
+  white-space: nowrap;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: auto 340px;
+  gap: 32px;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 1100px) {
+  .stage {
+    grid-template-columns: auto;
+    justify-items: center;
+  }
+}
+
+.hoop-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container for tweakpane controls */
+.panel {
+  --tp-base-shadow-color: transparent;
+  width: 340px;
+  padding: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.hoop-col,
+.panel {
+  /* Set z-index to be above the footer */
+  position: relative;
+  z-index: 1;
+}
+
+/* Wooden hoop ring around the stitch area */
+.hoop {
+  position: relative;
+  padding: var(--hoop-ring);
+  border-radius: var(--hoop-outer-radius);
+  background: linear-gradient(135deg, #F0D3A8, #D5A873);
+  box-shadow: 0 6px 18px rgba(95, 65, 30, 0.18);
+}
+
+/* Bracket that mounts the hoop to the machine arm */
+.hoop::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 25%;
+  bottom: 25%;
+  width: var(--hoop-ring);
+  background: #DDB685;
+  border-radius: calc(var(--hoop-ring) * 0.3) 0 0 calc(var(--hoop-ring) * 0.3);
+  box-shadow: 0 6px 18px rgba(95, 65, 30, 0.18);
+  z-index: -1;
 }
 
 #canvas {
-  background: var(--bg-page);
-  background: repeating-conic-gradient(var(--bg-page) 0 25%, var(--bg-page-grid) 0 50%) 50% / calc(var(--mm-to-px) * 2) calc(var(--mm-to-px) * 2);
-  border: 1px solid var(--bg-page);
-  border-radius: 3px;
+  display: block;
+  cursor: grab;
+  /* Grid background: each line is drawn in the middle of its tile, so with the tiles centered a line falls on the center */
+  --grid-line: transparent calc(50% - 0.5px), var(--color-grid) calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px);
+  --grid-minor: calc(var(--mm-to-px) * 2);
+  --grid-major: calc(var(--mm-to-px) * 10);
+  background:
+    linear-gradient(to right, var(--grid-line)) center / 100% 100% no-repeat,
+    linear-gradient(to bottom, var(--grid-line)) center / 100% 100% no-repeat,
+    linear-gradient(to right, var(--grid-line)) center / var(--grid-major) var(--grid-major),
+    linear-gradient(to bottom, var(--grid-line)) center / var(--grid-major) var(--grid-major),
+    linear-gradient(to right, var(--grid-line)) center / var(--grid-minor) var(--grid-minor),
+    linear-gradient(to bottom, var(--grid-line)) center / var(--grid-minor) var(--grid-minor),
+    #fff;
+  border-radius: var(--hoop-inner-radius);
+  /* Use an outline so the canvas keeps its same size */
+  outline: 1px solid var(--color-grid);
 }
 
-/* Wider tweakpane */
-.tp-dfwv {
-  min-width: 320px;
+#restart-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.6rem;
+  color: #fff;
+  background: var(--color-accent);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tp-rotv.tp-rotv {
+  /* Override Tweakpane hardcoded styles on its root. */
+  font-size: 12px !important;
 }
 
 /* Hide the thumbnail-list plugin "None" option. */
@@ -77,4 +208,26 @@ header a {
   align-items: center;
   line-height: 1.25 !important;
   overflow: hidden;
+}
+
+/* Attractor system of equations */
+.equation {
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--color-fg);
+  overflow-x: auto;
+}
+
+.equation math {
+  display: block math;
+  math-style: normal;
+}
+
+/* Align each row on its = */
+.equation mtd:first-child {
+  text-align: right;
+}
+
+.equation mtd:last-child {
+  text-align: left;
 }
