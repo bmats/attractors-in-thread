@@ -61,14 +61,21 @@ body {
   justify-content: center;
 }
 
-header {
+header, footer {
   position: fixed;
-  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
   text-align: center;
   white-space: nowrap;
+}
+
+header {
+  top: 1rem;
+  z-index: 1;
+}
+
+footer {
+  bottom: 1rem;
 }
 
 header h1 {
@@ -78,7 +85,7 @@ header h1 {
   color: var(--color-fg);
 }
 
-header p {
+header p, footer p {
   margin: 0.25rem 0 0;
   font-size: 0.75rem;
   color: var(--color-fg-secondary);
@@ -86,16 +93,6 @@ header p {
 
 header a, footer a {
   color: inherit;
-}
-
-footer {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  color: var(--color-fg-secondary);
-  white-space: nowrap;
 }
 
 .stage {
@@ -213,7 +210,7 @@ footer {
 /* Attractor system of equations */
 .equation {
   padding: 4px 0;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-fg);
   overflow-x: auto;
 }
@@ -230,4 +227,24 @@ footer {
 
 .equation mtd:last-child {
   text-align: left;
+}
+
+.equation-pulse {
+  animation: equation-pulse 1000ms ease-out forwards;
+}
+
+@keyframes equation-pulse {
+  0%, 20% {
+    /* Stack the glow layers so it's more visible */
+    text-shadow:
+      0 0 10px var(--color-accent),
+      0 0 10px var(--color-accent),
+      0 0 10px var(--color-accent);
+  }
+  100% {
+    text-shadow:
+      0 0 10px transparent,
+      0 0 10px transparent,
+      0 0 10px transparent;
+  }
 }

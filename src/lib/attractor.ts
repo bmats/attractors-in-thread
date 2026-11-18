@@ -25,13 +25,20 @@ export abstract class AttractorBase {
   // Scalar bindings that `randomize()` may re-roll within their declared range.
   private randomizable: { target: object; key: string; min: number; max: number; binding: BindingApi }[] = [];
 
+  private equationElement?: HTMLElement;
+
   constructor(controller: Controller) {
     this.controller = controller;
   }
 
   abstract render(layer: paper.Group): void;
 
-  /** Returns MathML markup for the attractor's system of equations. */
+  /**
+   * Returns MathML markup for the attractor's system of equations.
+   *
+   * Elements tagged with data-key="<key>"` pulse when that slider changes.
+   * E.g. <mi data-key="alpha">α</mi>
+   */
   get equation(): string {
     return '';
   }
@@ -42,13 +49,32 @@ export abstract class AttractorBase {
       // Kinda hacky: in order to show some static HTML, add a separator but take over its HTML.
       const blade = folder.addBlade({ view: 'separator', index: 0 });
       blade.element.innerHTML = `<div class="equation">${equation}</div>`;
+      this.equationElement = blade.element;
+    }
+  }
+
+  /** Pulses every equation element tagged with data-key="<key>". */
+  private highlightVariable(key: string): void {
+    if (!this.equationElement) {
+      return;
+    }
+
+    for (const element of this.equationElement.querySelectorAll(`[data-key="${key}"]`)) {
+      // The animation fill-mode of forwards, so it can be restarted by setting the time to 0 even after playing.
+      element.classList.add('equation-pulse');
+      for (const animation of element.getAnimations()) {
+        animation.currentTime = 0;
+      }
     }
   }
 
   /** Adds a slider bound to `target[key]`, rendering on change and registering it for randomization. */
   protected slider<T extends object>(folder: FolderApi, target: T, key: keyof T & string, min: number, max: number): void {
     const binding = folder.addBinding(target, key, { min, max });
-    binding.on('change', () => this.controller.render());
+    binding.on('change', () => {
+      this.highlightVariable(key);
+      this.controller.render();
+    });
     this.randomizable.push({ target, key, min, max, binding });
   }
 

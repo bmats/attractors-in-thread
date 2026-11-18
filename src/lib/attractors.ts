@@ -12,9 +12,9 @@ class ThomasAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>y</mi><mo>−</mo><mi>b</mi><mi>x</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>z</mi><mo>−</mo><mi>b</mi><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>x</mi><mo>−</mo><mi>b</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>y</mi><mo>−</mo><mi data-key="b">b</mi><mi>x</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>z</mi><mo>−</mo><mi data-key="b">b</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>sin</mi><mspace width="0.17em"></mspace><mi>x</mi><mo>−</mo><mi data-key="b">b</mi><mi>z</mi></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -62,10 +62,10 @@ class AizawaAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>(</mo><mi>z</mi><mo>−</mo><mi>b</mi><mo>)</mo><mi>x</mi><mo>−</mo><mi>d</mi><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>d</mi><mi>x</mi><mo>+</mo><mo>(</mo><mi>z</mi><mo>−</mo><mi>b</mi><mo>)</mo><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mo>+</mo><mi>a</mi><mi>z</mi><mo>−</mo><msup><mi>z</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn></mtd></mtr>
-          <mtr><mtd></mtd><mtd></mtd><mtd><mo>−</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>)</mo><mo>(</mo><mn>1</mn><mo>+</mo><mi>e</mi><mi>z</mi><mo>)</mo><mo>+</mo><mi>f</mi><mi>z</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>(</mo><mi>z</mi><mo>−</mo><mi data-key="b">b</mi><mo>)</mo><mi>x</mi><mo>−</mo><mi data-key="d">d</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="d">d</mi><mi>x</mi><mo>+</mo><mo>(</mo><mi>z</mi><mo>−</mo><mi data-key="b">b</mi><mo>)</mo><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="c">c</mi><mo>+</mo><mi data-key="a">a</mi><mi>z</mi><mo>−</mo><msup><mi>z</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn></mtd></mtr>
+          <mtr><mtd></mtd><mtd></mtd><mtd><mo>−</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>)</mo><mo>(</mo><mn>1</mn><mo>+</mo><mi data-key="e">e</mi><mi>z</mi><mo>)</mo><mo>+</mo><mi data-key="f">f</mi><mi>z</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -128,9 +128,9 @@ class LorenzAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>σ</mi><mo>(</mo><mo>−</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>ρ</mi><mi>x</mi><mo>−</mo><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mi>y</mi><mo>−</mo><mi>β</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="sigma">σ</mi><mo>(</mo><mo>−</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi data-key="rho">ρ</mi><mi>x</mi><mo>−</mo><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mi>y</mi><mo>−</mo><mi data-key="beta">β</mi><mi>z</mi></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -182,9 +182,9 @@ class DadrasAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>−</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>d</mi><mi>x</mi><mi>y</mi><mo>−</mo><mi>e</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>−</mo><mi data-key="a">a</mi><mi>x</mi><mo>+</mo><mi data-key="b">b</mi><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="c">c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="d">d</mi><mi>x</mi><mi>y</mi><mo>−</mo><mi data-key="e">e</mi><mi>z</mi></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -240,9 +240,9 @@ class ChenAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>α</mi><mi>x</mi><mo>−</mo><mi>y</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>β</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>δ</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>/</mo><mn>3</mn></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="alpha">α</mi><mi>x</mi><mo>−</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="beta">β</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="delta">δ</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>/</mo><mn>3</mn></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -295,9 +295,9 @@ class Lorenz84Attractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>x</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>f</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>y</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi>b</mi><mi>x</mi><mi>z</mi><mo>+</mo><mi>g</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>+</mo><mi>b</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi data-key="a">a</mi><mi>x</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi data-key="a">a</mi><mi data-key="f">f</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>y</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi data-key="b">b</mi><mi>x</mi><mi>z</mi><mo>+</mo><mi data-key="g">g</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>+</mo><mi data-key="b">b</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -352,9 +352,9 @@ class RosslerAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mo>(</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>)</mo></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>+</mo><mi>a</mi><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mo>+</mo><mi>z</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi>c</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mo>(</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>+</mo><mi data-key="a">a</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="b">b</mi><mo>+</mo><mi>z</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi data-key="c">c</mi><mo>)</mo></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -407,9 +407,9 @@ class HalvorsenAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>a</mi><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi data-key="a">a</mi><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi data-key="a">a</mi><mi>y</mi><mo>−</mo><mn>4</mn><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi data-key="a">a</mi><mi>z</mi><mo>−</mo><mn>4</mn><mi>x</mi><mo>−</mo><mn>4</mn><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -458,9 +458,9 @@ class RabinovichFabrikantAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>(</mo><mi>z</mi><mo>−</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi>γ</mi><mi>x</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>(</mo><mn>3</mn><mi>z</mi><mo>+</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi>γ</mi><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mn>2</mn><mi>z</mi><mo>(</mo><mi>α</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>)</mo></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>(</mo><mi>z</mi><mo>−</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi data-key="gamma">γ</mi><mi>x</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>(</mo><mn>3</mn><mi>z</mi><mo>+</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mi data-key="gamma">γ</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mn>2</mn><mi>z</mi><mo>(</mo><mi data-key="alpha">α</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>)</mo></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -511,9 +511,9 @@ class ThreeScrollUnifiedChaoticSystem extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>a</mi><mo>(</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>d</mi><mi>x</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mi>x</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi>f</mi><mi>y</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>c</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi>e</mi><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="a">a</mi><mo>(</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi data-key="d">d</mi><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="b">b</mi><mi>x</mi><mo>−</mo><mi>x</mi><mi>z</mi><mo>+</mo><mi data-key="f">f</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="c">c</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>y</mi><mo>−</mo><mi data-key="e">e</mi><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -572,9 +572,9 @@ class SprottAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>+</mo><mi>a</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mo>−</mo><mi>b</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>y</mi><mo>+</mo><mi data-key="a">a</mi><mi>x</mi><mi>y</mi><mo>+</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mo>−</mo><mi data-key="b">b</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>x</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mtd></mtr>
         </mtable>
       </math>
     `;
@@ -625,9 +625,9 @@ class FourWingAttractor extends Attractor3D {
     return `
       <math>
         <mtable>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>a</mi><mi>x</mi><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi></mtd></mtr>
-          <mtr><mtd><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>−</mo><mi>x</mi><mi>y</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="x"><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="a">a</mi><mi>x</mi><mo>+</mo><mi>y</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="y"><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mi data-key="b">b</mi><mi>x</mi><mo>+</mo><mi data-key="c">c</mi><mi>y</mi><mo>−</mo><mi>x</mi><mi>z</mi></mtd></mtr>
+          <mtr><mtd><mfrac><mrow data-key="z"><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd><mo>=</mo></mtd><mtd><mo>−</mo><mi>z</mi><mo>−</mo><mi>x</mi><mi>y</mi></mtd></mtr>
         </mtable>
       </math>
     `;
